@@ -1,0 +1,16 @@
+Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+
+
+# From AWS Config:
+
+- Redirection from HTTP to HTTPS:
+    To remediate we need to reconfigure our ALB to redirect all traffic from port 80 (https) to port 443 (https)
+- S3 Buckets ssl requests only:
+    Apply a policy to our S3 buckets that deny access to any action if it is not made using HTTPS
+- S3 Buckets server side encryption is not enabled
+    Enable AES server side encryption in all buckets
+
+# From AWS Inspector and Security HUB:
+
+- Ports for several types of services both UDP and TCP are open and accessible from our EC2 instances E.G.: Telnet, FTP, RDP, WINS, LDAP, etc.
+    Configure our VPC route tables and security groups to allow only the necessary ports are accessible in our instances, in this case port 5000 from the ALB and port 22 from trusted IPs (the company office for example)

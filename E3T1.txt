@@ -1,0 +1,9 @@
+# Describe GuardDuty findings that were detected related to the brute force attack
+
+GuardDuty detected two findings:
+- First from the attack instance. The details indicate that the instance was performing an SSH brute force attack on the other instance. This finding was marked as High Severity
+- Second from the Web Application instance indicating that it was target of the SSH brute force attack, but in this case the finding was marked with Low Severity.
+
+# Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information.
+
+The documentation indicate that SSH brute force finding comes from monitoring the port 22 traffic from the instances, this information is obtained using the VPC Flow Logs DataSource, however an important consideration is that logs used by GuardDuty are not directly visible in the AWS account we'll only see the VPC Flow if we have explicitly enabled it for our vpc.

@@ -1,0 +1,39 @@
+# Identify tools that will allow you to do the following:
+
+## Scan infrastructure as code templates
+
+- TFSec ( https://github.com/liamg/tfsec )
+
+### Example vulnerability
+
+- Insecure SG allowing all ports or unrestricted IP access
+- ALB with HTTP traffic enabled
+- Unencrypted resources such as S3 or EBS volumes
+- Public available resources
+
+##Scan AMI’s or containers for OS vulnerabilities
+
+- AWS Inspector
+- Anchore (https://anchore.com/)
+
+### Example vulnerability
+
+- Bad access policies such as SSH password login
+- Outdated libraries with vulnerabilities
+- Missing OS security patches for known exploits
+- Package blacklists
+- Presence of credentials in an image
+- IAM Roles too permissive
+
+##Scan an AWS environment for cloud configuration vulnerabilities
+
+- AWS Config
+- Cloud Custodian (https://github.com/cloud-custodian/cloud-custodian)
+
+### Example vulnerability
+
+- Unencrypted S3 buckets
+- Publicly writable S3 buckets
+- Use of unapproved AMI’s
+- ALB not redirect HTTP traffic to https
+- IAM password policies is too weak

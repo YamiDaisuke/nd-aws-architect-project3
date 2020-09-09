@@ -1,0 +1,21 @@
+
+# What additional architectural change can be made to reduce the internet facing attack surface of the web application instance.
+
+- Activate WAF in front of our ALB to block suspicious traffic and DDoS attacks
+- Force ALB traffic to use HTTPS
+- Apply a solution like FortiGate Next-Generation Firewall VM to control egress traffic
+
+# Assuming the IAM permissions for the S3 bucket are still insecure, would creating VPC private endpoints for S3 prevent the unauthorized access to the secrets bucket.
+
+- Yes with this even by having AWS credentials and assuming the attacker have not enter an EC2 instance inside the same VPC they won't be able to access the content of the bucket
+
+# Will applying default encryption setting to the s3 buckets encrypt the data that already exists?
+
+- No the existing data inside the bucket remains as is. We need to manually re-upload this objects to apply encryption
+
+# What would happen if the original cloud formation templates are applied to this environment.
+
+- The templates can't be applied again, we'll get an error indicating the stack already exists:
+    - An error occurred (AlreadyExistsException) when calling the CreateStack operation: Stack [c3-s3] already exists
+- If you try to update the stack instead of create again you'll still get an error, indicating there are no changes to be applied:
+    - An error occurred (ValidationError) when calling the UpdateStack operation: No updates are to be performed.
