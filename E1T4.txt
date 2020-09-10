@@ -1,5 +1,9 @@
 Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
 
-# Web Service Instance Role too permissive
+# Web Service Instance Role too permissive should have only GetObject permission
 
-# Web Service Instance should not allow ssh connection from any IP
+# Web Service Instance Role must not allow access to secret recipe bucket
+
+# Security group for Web Service Instance should block all ports but 5000
+
+# Security group for Web Service Instance should allow traffic in port 5000 only from specific IPS E.G.: Subnet CIDR
